@@ -1,0 +1,46 @@
+@1789 4 30   #1797 3 3        *George Washington*           $2 full terms
+@1797 3 4    #1801 3 3        *John Adams*                  $1 full term
+@1801 3 4    #1809 3 3        *Thomas Jefferson*            $2 full terms
+@1809 3 4    #1817 3 3        *James Madison*               $2 full terms
+@1817 3 4    #1825 3 3        *James Monroe*                $2 full terms
+@1825 3 4    #1829 3 3        *John Quincy Adams*           $1 full term
+@1829 3 4    #1837 3 3        *Andrew Jackson*              $2 full terms
+@1837 3 4    #1841 3 3        *Martin Van Buren*            $1 full term
+@1841 3 4    #1841 4 4        *William Henry Harrison*      $1 partial term
+@1841 4 6    #1845 3 3        *John Tyler*                  $1 partial term
+@1845 3 4    #1849 3 3        *James K. Polk*               $1 full term
+@1849 3 5    #1850 7 9        *Zachary Taylor*              $1 partial term
+@1850 7 10   #1853 3 3        *Millard Fillmore*            $1 partial term
+@1853 3 4    #1857 3 3        *Franklin Pierce*             $1 full term
+@1857 3 4    #1861 3 3        *James Buchanan*              $1 full term
+@1861 3 4    #1865 4 15       *Abraham Lincoln*             $1 full term, 1 partial term
+@1865 4 16   #1869 3 3        *Andrew Johnson*              $1 partial term
+@1869 3 4    #1877 3 3        *Ulysses S. Grant*            $2 full terms
+@1877 3 4    #1881 3 3        *Rutherford B. Hayes*         $1 full term
+@1881 3 4    #1881 9 19       *James A. Garfield*           $1 partial term
+@1881 9 20   #1885 3 3        *Chester A. Arthur*           $1 partial term
+@1885 3 4    #1889 3 3        *Grover Cleveland*            $2 non-cosecutive terms
+@1889 3 4    #1893 3 3        *Benjamin Harrison*           $1 full term
+@1893 3 4    #1897 3 3        *Grover Cleveland*            $2 non-consecutive Terms
+@1897 3 4    #1901 9 14       *William McKinley*            $1 full term, 1 partial term
+@1901 9 15   #1909 3 3        *Theodore Roosevelt*          $1 partial term, 1 full term
+@1909 3 4    #1913 3 3        *William H. Taft*             $1 full term
+@1913 3 4    #1921 3 3        *Woodrow Wilson*              $2 full terms
+@1921 3 4    #1923 8 2        *Warren G. Harding*           $1 partial term
+@1923 8 3    #1929 3 3        *Calvin Coolidge*             $1 partial term, 1 full term
+@1929 3 4    #1933 3 3        *Herbert C. Hoover*           $1 full term
+@1933 3 4    #1945 4 12       *Franklin D. Roosevelt*       $3 full Terms, 1 partial term
+@1945 4 13   #1953 1 20       *Harry S. Truman*             $1 partial term, 1 full term
+@1953 1 21   #1961 1 20       *Dwight D. Eisenhower*        $2 full terms
+@1961 1 21   #1963 11 22      *John F. Kennedy*             $1 partial term
+@1963 11 23  #1969 1 20       *Lyndon B. Johnson*           $1 partial term, 1 full term
+@1969 1 21   #1974 8 9        *Richard M. Nixon*            $1 full term, 1 partial term
+@1974 8 10   #1977 1 20       *Gerald R. Ford*              $1 partial term
+@1977 1 21   #1981 1 20       *James Earl Carter*           $1 full term
+@1981 1 21   #1989 1 20       *Ronald Reagan*               $2 full terms
+@1989 1 21   #1993 1 20       *George Bush*                 $1 full term
+@1993 1 21   #2001 1 20       *William J. Clinton*          $2 full terms
+@2001 1 21   #2009 1 20       *George W. Bush*              $2 full terms
+@2009 1 21   #2017 1 20       *Barack H. Obama*             $2 full terms
+@2017 1 21   #2021 1 20       *Donald J. Trump*             $1 full term
+@2021 1 21   #2025 1 20       *Joseph R. Biden, Jr.*        $currently serving
