@@ -4,39 +4,55 @@
 
 using namespace std;
 
-void readDates (int userDate[], int startDate[], int endDate[], string& presidentName, string& termsServed);
+const int DATE_ARRAY_SIZE = 3;
+
+struct resultsType {
+    int startDate[DATE_ARRAY_SIZE];
+    int endDate[DATE_ARRAY_SIZE];
+    string name;
+    string terms;
+};
+
+
+bool readDates (int userDate[], resultsType &results);
 
 int main()
 {
     //dummy main for testing
 
-    string presidentName;
-    string termsServed;
-    int startDate[3], endDate[3];
-    int userDate[3] = {2013,2,20}; //assigning a test variable to simulate user input
+    resultsType results;
 
-    readDates(userDate, startDate, endDate, presidentName, termsServed);
+    int userDate[DATE_ARRAY_SIZE] = {2013,1,21}; //assigning a test variable to simulate user input
 
-    cout << endl;
-    cout << presidentName << " was president ";
-    for (int i = 0; i < 3; i++)
+    if (!readDates(userDate, results))
     {
-        cout << startDate[i] << '/';
+        cout << "Error, date out of bounds." << endl;
+        return -1;
     }
-    cout << " - ";
-    for (int i = 0; i < 3; i++)
-    {
-        cout << endDate[i] << '/';
-    }
-    if (termsServed ==  "currently serving")
-        cout << endl << "he is " << termsServed;
+
     else
-        cout << endl << "he served " << termsServed;
+    {
+        cout << endl;
+        cout << results.name << " was president ";
+        for (int i = 0; i < DATE_ARRAY_SIZE; i++)
+        {
+            cout << results.startDate[i] << '/';
+        }
+        cout << " - ";
+        for (int i = 0; i < DATE_ARRAY_SIZE; i++)
+        {
+            cout << results.endDate[i] << '/';
+        }
+        if (results.terms ==  "currently serving")
+            cout << endl << "he is " << results.terms;
+        else
+            cout << endl << "he served " << results.terms;
+    }
 
     return 0;
 }
 
-void readDates (int userDate[], int startDate[], int endDate[], string& presidentName, string& termsServed)
+bool readDates (int userDate[], resultsType &results)
 {
     //Variables
     ifstream inFile;
@@ -50,55 +66,57 @@ void readDates (int userDate[], int startDate[], int endDate[], string& presiden
     {
         //skips to a start date and inputs it into an array
         inFile.ignore(100, '@'); 
-        for (int i = 0 ; i<3 ; i++)
+        for (int i = 0 ; i < DATE_ARRAY_SIZE ; i++)
         {
-            inFile >> startDate[i];
+            inFile >> results.startDate[i];
             inFile.ignore(100, ' ');
         }
 
         //skips to an end date and inputs it into an arrray
         inFile.ignore(100, '#');
-        for (int i = 0 ; i<3 ; i++)
+        for (int i = 0 ; i < DATE_ARRAY_SIZE; i++)
         {
-            inFile >> endDate[i];
+            inFile >> results.endDate[i];
             inFile.ignore(100, ' ');
         }
 
         //If structure to compare dates
 
-        if (userDate[0] > startDate[0] && userDate[0] < endDate[0])    //compares user date year against year range
+        if (userDate[0] > results.startDate[0] && userDate[0] < results.endDate[0])    //compares user date year against year range
             matchFound = true;
 
-        else if (userDate[0] == startDate[0])   // if same as start year, compare months
+        else if (userDate[0] == results.startDate[0])   // if same as start year, compare months
         {
-            if (userDate[1] > startDate[1])
+            if (userDate[1] > results.startDate[1])
                 matchFound = true;
 
-            else if (userDate[1] == startDate[1])   // if same months, compare days
-                if (userDate[2] >= startDate[2])    
+            else if (userDate[1] == results.startDate[1])   // if same months, compare days
+                if (userDate[2] >= results.startDate[2])    
                     matchFound = true;
         }
 
-        else if (userDate[0] == endDate[0]) // if same as end year, compare months
+        else if (userDate[0] == results.endDate[0]) // if same as end year, compare months
         {
-            if (userDate[1] < endDate[1])
+            if (userDate[1] < results.endDate[1])
                 matchFound = true;
-            else if (userDate[1] == startDate[1]) // if same month, compare days
-                if (userDate[2] <= endDate[2])
+            else if (userDate[1] == results.startDate[1]) // if same month, compare days
+                if (userDate[2] <= results.endDate[2])
                     matchFound = true;
         }
     } // end of While loop
     
     if (!matchFound)
-        cout << "Date out of bounds.";
+        return false;
     else
     {
         inFile.ignore(100, '*');
-        getline(inFile, presidentName, '*');
+        getline(inFile, results.name, '*');
         inFile.ignore(100, '$');
-        getline(inFile, termsServed);
+        getline(inFile, results.terms);
     }
 
-    //Closing the inpute file
+    //Closing the input file
     inFile.close();
+
+    return true;
 }
