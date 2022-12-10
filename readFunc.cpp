@@ -6,7 +6,7 @@ using namespace std;
 
 void readDates (int userDate[], int startDate[], int endDate[], string& presidentName, string& termsServed);
 
-int main()
+int robert()
 {
     //dummy main for testing
 
