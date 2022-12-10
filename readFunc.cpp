@@ -1,11 +1,26 @@
+/////////////////////////////////////////////////////////////////////////////////
+//Notes:
+    //Function prototype if needed:
+    //  bool readDates (string fileName, int userDate[], resultsType &results);
+
+    //Variables something like this should be declared in main:
+    //  resultsType results;
+    //  string fileName = argv[1];
+    //  int userDate[DATE_ARRAY_SIZE];
+
+//header files
 #include <iostream>
 #include <fstream>
 #include <string>
 
 using namespace std;
+///////////////////////////////////////////////////////////////////////////////////
 
-const int DATE_ARRAY_SIZE = 3;
 
+
+const int DATE_ARRAY_SIZE = 3; //constant for array sizes - (Robert Kern)
+
+//struct to store results of the readData() function - (Robert Kern)
 struct resultsType {
     int startDate[DATE_ARRAY_SIZE];
     int endDate[DATE_ARRAY_SIZE];
@@ -13,53 +28,17 @@ struct resultsType {
     string terms;
 };
 
-
-bool readDates (int userDate[], resultsType &results);
-
-int main()
-{
-    //dummy main for testing
-
-    resultsType results;
-
-    int userDate[DATE_ARRAY_SIZE] = {2013,1,21}; //assigning a test variable to simulate user input
-
-    if (!readDates(userDate, results))
-    {
-        cout << "Error, date out of bounds." << endl;
-        return -1;
-    }
-
-    else
-    {
-        cout << endl;
-        cout << results.name << " was president ";
-        for (int i = 0; i < DATE_ARRAY_SIZE; i++)
-        {
-            cout << results.startDate[i] << '/';
-        }
-        cout << " - ";
-        for (int i = 0; i < DATE_ARRAY_SIZE; i++)
-        {
-            cout << results.endDate[i] << '/';
-        }
-        if (results.terms ==  "currently serving")
-            cout << endl << "he is " << results.terms;
-        else
-            cout << endl << "he served " << results.terms;
-    }
-
-    return 0;
-}
-
-bool readDates (int userDate[], resultsType &results)
+//function that reads dates from the input file, compares them to a date input by a user
+//and adds data for a corresponding president to a results struct.
+//returns true if successful, or false if it couldn't find a matching range of dates - (Robert Kern)
+bool readDates (string fileName, int userDate[], resultsType &results) 
 {
     //Variables
     ifstream inFile;
     bool matchFound = false;
 
     //open input file
-    inFile.open("Presidents.txt");
+    inFile.open(fileName);
 
     //loop continues until a matching date range is found or the input file ends
     while (!matchFound && !inFile.eof())
@@ -81,7 +60,6 @@ bool readDates (int userDate[], resultsType &results)
         }
 
         //If structure to compare dates
-
         if (userDate[0] > results.startDate[0] && userDate[0] < results.endDate[0])    //compares user date year against year range
             matchFound = true;
 
