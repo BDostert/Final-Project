@@ -112,8 +112,10 @@ bool readDates(string fileName, int userDate[], resultsType& results)
 
 void Output(int userDate[], resultsType results) {
 
-    ofstream fsOut;
-    fsOut.open("results.txt");
+    static ofstream fsOut;
+
+    if (!fsOut.is_open()) //should only open the output file once, so previous results don't get overwritten --(R Kern)
+        fsOut.open("results.txt");
 
     if (fsOut.is_open()) {
         // outputs results to screen 
@@ -169,23 +171,24 @@ int main(int argc, char* argv[1])
             }
             else if (userInput == 'y' || userInput == 'Y')
             {
-                cout << "Please enter the Presidents first year in office: ";
+                cout << "Please enter a year: ";
                 cin >> dateInput[0];  // Populate index [0] of dateInput array
 
-
-                cout << "Please enter the month of when the President took office: ";
+                cout << "Please enter a month: ";
                 cin >> dateInput[1];  // Populate index [1] of dateInput array
 
-                cout << "Please enter first day of when the President took office: ";
+                cout << "Please enter a day: ";
                 cin >> dateInput[2];  // Populate index [2] of dateInput array
                 cout << "\n";
 
                 // Call readDates function and take in the file along with user information
-                readDates(argv[1], dateInput, results);
-
-                // Call Output function to create results text file and output to the display
-                Output(dateInput, results);
-
+                if (readDates(argv[1], dateInput, results)) //only calls the Output() function if a matching date is found --(R Kern)
+                {
+                    // Call Output function to create results text file and output to the display
+                    Output(dateInput, results);
+                }
+                else
+                    cout << "Date out of bounds." << endl;
             }
             // Quit program based on user input
             else if (userInput == 'q' || userInput == 'Q')
