@@ -1,4 +1,9 @@
-// Final Project.cpp : 
+//Title: ITCS 2350 Final Project.cpp
+//Authors: Brandon Dostert, Robert Fox, Robert Kern
+//Date: 12/11/2022
+//Description: A program that will take a users input of year/month/day
+//and return the President along with the terms they served.  Then create an output file.
+
 
 #include <iostream>
 #include <fstream>
@@ -17,7 +22,8 @@ struct resultsType {
     string terms;
 };
 
-void Introduction(char c, string message)
+// displays the header along with the help menu (Robert Fox)
+void Introduction(char c, string message) 
 {
     //Display header
     cout << setfill(c) << setw(40) << c << endl;
@@ -25,8 +31,8 @@ void Introduction(char c, string message)
     cout << setfill(c) << setw(40) << c << endl;
     cout << endl;
 
-    //Display output to the user
-    cout << "Enter \'m\' to show Menu" << endl;
+    //Display menu options to the user
+    cout << "Enter \'m\' to show the Menu" << endl;
     cout << "Enter \'y\' to get President for given date" << endl;
     cout << "Enter \'q\' to exit the program" << endl;
 
@@ -124,10 +130,10 @@ void Output(int userDate[], resultsType results) {
 
 }
 
-int main(int argc, char* argv[1])
+// Brings in file and calls all functions to execute user inputs (Robert Fox)
+int main(int argc, char* argv[1]) 
 {
     //Declare variables
-
     string message = " ITCS 2350 Group 4: Final Project ";
     char c = '*';
     char userInput = ' ';
@@ -140,54 +146,61 @@ int main(int argc, char* argv[1])
 
 
 
-        //decide which function to call
+        //Decide which function to call
         while (userInput != 'q' && userInput != 'Q')
         {
 
-            // add space for next prompt
+            // Add space for next prompt
             cout << endl;
             cout << endl;
 
-            //receive users input
+            //Receive users input
             cout << "Please enter an operation to perform:";
             cin >> userInput;
             cin.ignore(100,'\n'); // this is to clear the buffer for first hundred characters or new line
-            cout << "\n";
+            cout << "\n"; //adds a new line
 
+            //Execute option based on user input
             if (userInput == 'm' || userInput == 'M')
             {
-                // Function allows user to enter choice
+                // Function displays header and choice for user to enter
                 Introduction('*', message);
 
             }
             else if (userInput == 'y' || userInput == 'Y')
             {
-                cout << "Please enter the year:";
-                cin >> dateInput[0];
+                cout << "Please enter the Presidents first year in office: ";
+                cin >> dateInput[0];  // Populate index [0] of dateInput array
 
 
-                cout << "Please enter the month:";
-                cin >> dateInput[1];
+                cout << "Please enter the month of when the President took office: ";
+                cin >> dateInput[1];  // Populate index [1] of dateInput array
 
-                cout << "Please enter the day:";
-                cin >> dateInput[2];
+                cout << "Please enter first day of when the President took office: ";
+                cin >> dateInput[2];  // Populate index [2] of dateInput array
                 cout << "\n";
 
+                // Call readDates function and take in the file along with user information
                 readDates(argv[1], dateInput, results);
 
+                // Call Output function to create results text file and output to the display
                 Output(dateInput, results);
 
             }
+            // Quit program based on user input
+            else if (userInput == 'q' || userInput == 'Q')
+            {
+                cout << "Program ending." << endl;
+                cout << "Good Bye!" << endl;
+
+                system("pause");
+            }
+            // Display choices based on invalid entry
             else
             {
                 cout << "\nInvalid selection please choose \'m\', \'y\', \'q\'. try again." << endl;
             }
         }
-        cout << "Program ending.\n" << endl;
-
-        cout << "Good Bye" << endl;
-
-
 
         // return 0 to indicate success.
         return (0);
