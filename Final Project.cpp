@@ -171,14 +171,14 @@ int main(int argc, char* argv[1])
             }
             else if (userInput == 'y' || userInput == 'Y')
             {
-                cout << "Please enter the Presidents first year in office: ";
+                cout << "Please enter a year: ";
                 cin >> dateInput[0];  // Populate index [0] of dateInput array
 
 
-                cout << "Please enter the month of when the President took office: ";
+                cout << "Please enter a month: ";
                 cin >> dateInput[1];  // Populate index [1] of dateInput array
 
-                cout << "Please enter first day of when the President took office: ";
+                cout << "Please enter a day: ";
                 cin >> dateInput[2];  // Populate index [2] of dateInput array
                 cout << "\n";
 
